@@ -1,0 +1,147 @@
+Steps for installation :-
+1). install Node
+2). use this command on terminal npx create-react-app my-app
+3). remove the unnecessary files like reportvitals() etc
+
+<------------------------------------------->
+
+How it works :-
+index.js in src folder create a reactDOM and render react component. It imports App.js and render it in a index.js from public folder
+
+<------------------------------------------->
+
+Imports and Exports (Preferred Default and name should be capitalize)
+1). Default import and export components :-
+
+    function App(){}
+    export default App
+
+    import App from "./App"
+    <App /> Or <App></App>
+2). Normal import and export components :-
+
+    function App(){} and function Mode(){}
+    export {App, Mode};
+
+    import {App, Mode} from "./App"
+    <App /> Or <App></App>
+    <Mode /> Or <Mode></Mode>
+
+<------------------------------------------->
+
+Rules 
+1). React function returns UI instead of value
+2). We can write html code inside functions called JSX 
+
+<------------------------------------------->
+
+JSX(Javasxript and XML) and it rules
+
+1). You cannot use "class" and "for" attributes in html inside jsx because they're also predefined keywords in javascript. So, Instead of using "class" and "for" attributes uou can use "className" or "htmlFor"
+
+2). In JSX code you can use javascript using {} brackets inside it for eg.
+let name = "bg-dark"
+return <div className = {name}> Hello World</div>
+
+3). In jsx all the html code must be wrap in a single element or you can use fragment <></> for eg
+return (
+    <>
+    <div>Hello</div>
+    <div>World</div>
+    </>
+)
+
+4). Every tag must be close like <img /> and <br /> etc.
+
+5). In JSX you can style element using javascript in object form for eg
+
+<div style={{backgroundColor: "red", color: "white"}} >Test</div>
+OR 
+let style = {
+    backgroundColor: "red", 
+    color: "white"
+}
+return <div style={style} >Test</div>
+
+6). You can put JSX into a variable for eg
+
+let variable = <div className="bg-dark" id={id} >I am in variable</div>
+return (
+    <div className="container">
+        {variable}
+    </div>
+)
+
+7). Also the name of attributes and styling properties must follow camelCase convention
+
+<------------------------------------------->
+
+Props
+Props is used to pass data to components from parent to child. Props are read only
+
+Method 1 :-
+<Component title="title1" desc="description" />
+function Component(props){
+    return(
+    <>
+      <div>{props.title}</div>
+      <div>{props.desc}</div>
+    </>
+    )
+}
+
+Method 2 (most preferable) :-
+<Component title="title1" desc="description" />
+function Component({title, desc}){
+    return(
+    <>
+      <div>{title}</div>
+      <div>{desc}</div>
+    </>
+    )
+}
+
+Method 3 :- (Note :- the obj keys needs to be same as props)
+function Component({title, desc}){
+    let obj = {
+        title: title1,
+        desc: description
+    }
+    return(
+        <Component {...obj} />
+    )
+}
+
+function Component({title, desc}){
+    return(
+    <>
+      <div>{title}</div>
+      <div>{desc}</div>
+    </>
+    )
+}
+
+Method 4 :- (Default Props) We can also add default value in a prop like 
+<Component title="title1" />
+function Component({title, desc="empty description"}){
+    return(
+    <>
+      <div>{title}</div>
+      <div>{desc}</div>
+    </>
+    )
+}
+
+There is a special type of prop we called it children prop
+<Component>Some Value</Component>
+function Component({children}){
+    return(
+    <>
+      <div>title</div>
+      <div>{children}</div>
+    </>
+    )
+}
+
+<------------------------------------------->
+
