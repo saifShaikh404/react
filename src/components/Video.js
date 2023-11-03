@@ -2,6 +2,7 @@ import './Video.css'
 import React from 'react'
 
 const Video = ({title, channel="Anonymus", views, duration, image, id, verified=false, children}) => {
+  console.log("Video")
   return (
     <>
     <div className='video'>

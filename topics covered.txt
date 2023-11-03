@@ -1,11 +1,6 @@
-Conditional Rendering :-
-We can conditionally render react component
+useState Hook :-
+we can change the internal variable in javascript using their functionality. but we cannot directly update UI in react so, we use useState hook to change the UI. because whenever the component change It re-renders and state is able to store data inside it.
 
-Event handling :- 
-chect the comments on the code for better understanding.
+Whenever we change a state or props. Then those component which is have the changed state or prop will re-renders.
 
-Event Bubbling :-
-use e.stopPropagation() in event handler function to stop event bubbling always put this on event handler function for good practice
-
-Children prop :-
-Special type of prop can be passed inside component
+See Count.js for example
