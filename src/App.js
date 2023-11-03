@@ -4,11 +4,12 @@ import data from "./data.json";
 import PlayButton from './components/PlayButton';
 
 function App() {
+
   return (
     <>
-      <h1>Image gallary</h1>
+      <h1 className='main-title'>Image gallary</h1>
 
-      <div className="container">
+      <div className="container" onClick={() => console.log("Parent App")}>
         {
           data.map((ele) => {
             return (
@@ -30,8 +31,6 @@ function App() {
             )
           })
         }
-
-        
 
       </div>
     </>
