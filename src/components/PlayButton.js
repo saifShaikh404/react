@@ -9,7 +9,8 @@ const PlayButton = ({value1, value2,children}) => {
     // }
 
     let authentication = false;
-    function handleClickEvent(){
+    function handleClickEvent(e){
+        // e.stopPropagation()
         if(authentication) {
             value2()
         } else {
