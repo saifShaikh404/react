@@ -1,0 +1,8 @@
+Conditional Rendering :-
+We can conditionally render react component
+
+Event handling :- 
+chect the comments on the code for better understanding.
+
+Children prop :-
+Special type of prop can be passed inside component
