@@ -4,5 +4,8 @@ We can conditionally render react component
 Event handling :- 
 chect the comments on the code for better understanding.
 
+Event Bubbling :-
+use e.stopPropagation() in event handler function to stop event bubbling always put this on event handler function for good practice
+
 Children prop :-
 Special type of prop can be passed inside component
