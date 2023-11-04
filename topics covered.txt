@@ -1,0 +1,8 @@
+CRUD Operation :-
+We have already did Create and read part. In this repo we did Update and delete operations in react js 
+
+useEffect Hook :-
+useEffect hooks execute when the component is mount(rendered) and then whernever the dependency changed.
+When we declare useEffect hook we give it a dependency inside array [], or if we dont have dependency we can leave the array empty, But putting array is important otherwise it will run infinitely
+
+Check App.js and AddVideo.js file for better understanding of above topics
