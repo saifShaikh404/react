@@ -1,0 +1,18 @@
+useReducer Hook :-
+used for managing state at one place. (Redux topic)
+
+Syntax :-
+const [video, dispatch] = useReducer(videoReducer, data)
+
+--> it is like state 
+1). video is a current state
+2). dispatch is a function which returns type and payload of an operation on state. Its looks like = dispatch({type: "ADD", payload:data})
+3). videoReducer is a reducer function, All our state operation handle inside it, Also reducer function always return new state, we can use if elseif method or switch method(preferred) in based of dispatch type and get data via payload. The reducer function require 2 arguments.
+
+function videoReducer (initialState, action){...code}
+--> initialState is a current state which is video
+--> action is an object which comes from payload
+
+4). data is initial value of current state
+
+Check App.js for better understanding.
