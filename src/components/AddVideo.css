@@ -1,0 +1,48 @@
+.header {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.header form input {
+    margin-right: 6px;
+    font-weight: bold;
+    background-color: white;
+    padding: 5px;
+    margin-top: 10px;
+}
+
+.header form button {
+    background-color: black;
+    border: 1px solid green;
+    border-radius: 4px;
+    padding: 5px;
+    font-size: 14px;
+    color: green;
+    font-weight: 400;
+    transition: color 0.4s ease, background-color 0.4s ease, border 0.4s ease;
+}
+
+.header form button:hover {
+    color: white;
+    background-color: green;
+    border: 1px solid white;
+}
+
+.header-content button{
+    background-color: yellow;
+    color: black;
+    padding: 5px;
+    margin-left: 10px;
+    border: 1px solid black;
+    font-weight: bold;
+}
+
+.main-title.light-mode {
+    color: black;
+}
+
+.form-element.light-mode input{
+    background-color: yellow;
+    color: black;
+    font-weight: bold;
+}
