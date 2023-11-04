@@ -1,0 +1,29 @@
+[
+    {
+        "id": 1,
+        "title": "Youtube",
+        "channel": "Frenzy",
+        "views": "5K",
+        "duration": "5 months ago",
+        "image": 1,
+        "verified": true
+    },
+    {
+        "id": 2,
+        "title": "Instagram",
+        "channel": "Waffle",
+        "views": "200K",
+        "duration": "11 months ago",
+        "image": 2,
+        "verified": false
+    },
+    {
+        "id": 3,
+        "title": "Facebook",
+        "channel": "Joyboy",
+        "views": "5M",
+        "duration": "2 years ago",
+        "image": 3,
+        "verified": true
+    }
+]

@@ -1,0 +1,18 @@
+Forms :-
+
+Forms have a natural behaviour of redreshing a page after submission. We can use e.preventDefault() to stop that behaviour.
+
+Forms are 2 types controlled and uncontrolled. Controll Form has a value inside it inputs where uncontrolled not.
+
+
+Computed Property :-
+Passing variable as a object key - check CD JS chapter 12 - Enhanced Object literal file
+
+
+Lifting State :-
+
+Passing state from parent to child is simple. We can easily pass state via props. But child to parent is little tricky so instead of passing state we passed function from parent to child and took the child state as an argument in that function.
+
+Passing Data to sibling is also work like child to parent then parent to another child (Which is sibling)
+
+Check App.js and AddVideo.js

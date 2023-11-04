@@ -1,0 +1,20 @@
+.video {
+    background-color: black;
+    margin: 0px 10px 10px 10px;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.content {
+    background-color: black;
+    padding: 10px;
+}
+
+.content h5 {
+    font-size: 19px;
+}
+
+.content h5, p, span {
+    color: white;
+    background-color: black;
+}
