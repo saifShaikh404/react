@@ -1,6 +1,7 @@
 import './App.css';
 import { useReducer, useState } from 'react';
 import data from "./data.json";
+import CachedHook from './components/CachedHook';
 import Count from './components/Count';
 import AddVideo from './components/AddVideo';
 import VideoMap from './components/VideoMap';
@@ -60,7 +61,7 @@ function App() {
   const [mode, setMode] = useState('dark-mode')
   
   function modeSwitcher(){
-    setMode(mode == "dark-mode"? "light-mode":"dark-mode")
+    setMode(mode === "dark-mode"? "light-mode":"dark-mode")
   }
 
   function updateVideo(id){
@@ -76,6 +77,7 @@ function App() {
         <div className={`main-app ${mode}`}>
           <AddVideo editableVid={editableVid} modeSwitcher={modeSwitcher} mode={mode} ></AddVideo>
           <VideoMap video={video} updateVideo={updateVideo} ></VideoMap>
+        <CachedHook></CachedHook>
         </div>
       </VideoDispatchContext.Provider>
     </ThemeContext.Provider>

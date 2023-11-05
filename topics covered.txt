@@ -1,33 +1,11 @@
-useEffect Hook :-
-Pretty complex hook. run first after component mount(render). Then i f we didn't give any dependency it will run after every re render. If we give it empty array in dependency then it will run only 1 time when component mount, and if we give it any dependency then it will run whenever there is change in that dependency
+useMemo Hook :- 
+use to memoized (cached) function value gives performance boost
 
-example:-
-	useEffect(() => {
-		setData(data)
-	},[data])
-// it will run first when component mount and then when there is any change in that data dependency
+useCallback Hook :-
+use to memoized (cached) whole function
 
-Clean up function:-
-The useEffect hook is used for handling side effects in functional components. It allows you to perform tasks such as data fetching, DOM manipulation, or subscribing to external resources. 
-you may want to clean up any resources or effects that were created by the effect when the component unmounts, to prevent memory leaks or unexpected behavior.
+Their syntax are same and they boot take dependency array
 
-The flow of cleanup function is 
-1). useEffect functionality ==> cleanup function // when first mount
-2). cleanup function(previous useEffect) ==> useEffect functionality // When re-render and change of dependency
-3). cleanup function (previous useEffect) // When component unmounts
+If there is no dependency array to pass then just pass empty array
 
-Example :-
-  useEffect(() => {
-    let intervalID = setInterval(() => {
-      console.log("Running", id)
-    }, 1000)
-
-    return () => {
-      console.log("cleared")
-      clearInterval(intervalID)
-    }
-  }, [id])
-
-Note :- It is mostly used for DOM manipulation and API handling
-
-Check Video.js and VideoMap.js for better understanding
+Check CachedHook.js for better understanding.
