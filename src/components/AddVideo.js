@@ -1,8 +1,9 @@
 import React, { useContext,useEffect, useState } from 'react'
 import './AddVideo.css';
 import ThemeContext from '../context/ThemeContext';
+import CustomVideoDispatch from '../context/CustomVideoDispatch';
 
-const AddVideo = ({dispatch, editableVid, modeSwitcher, mode}) => {
+const AddVideo = ({editableVid, modeSwitcher, mode}) => {
 
     let dataToAdd = {
             id: null,
@@ -47,6 +48,7 @@ const AddVideo = ({dispatch, editableVid, modeSwitcher, mode}) => {
       },[editableVid])
 
       let theme = useContext(ThemeContext)
+      let dispatch = CustomVideoDispatch()
 
   return (
     <div className='header'>

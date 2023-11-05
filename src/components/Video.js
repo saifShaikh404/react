@@ -1,8 +1,10 @@
+import CustomVideoDispatch from '../context/CustomVideoDispatch'
 import './Video.css'
 import React from 'react'
 
-const Video = ({title, channel="Anonymus", views, duration, image, id, verified=false, children, dispatch, updateVideo}) => {
+const Video = ({title, channel="Anonymus", views, duration, image, id, verified=false, children, updateVideo}) => {
   console.log("Video")
+  let dispatch = CustomVideoDispatch()
   return (
     <>
     <div className='video'>

@@ -2,7 +2,7 @@ import React from 'react'
 import Video from './Video'
 import PlayButton from './PlayButton'
 
-const VideoMap = ({video, dispatch, updateVideo}) => {
+const VideoMap = ({video, updateVideo}) => {
   return (
     <div className="container">
         {
@@ -17,8 +17,7 @@ const VideoMap = ({video, dispatch, updateVideo}) => {
                 image={ele.image}
                 id={ele.id}
                 verified={ele.verified}
-                updateVideo={updateVideo}
-                dispatch={dispatch}>
+                updateVideo={updateVideo}>
                   <PlayButton 
                     value1={() => console.log("Playing... ", ele.title)} 
                     value2={() => console.log("Paused... ", ele.title)} >

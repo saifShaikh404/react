@@ -4,6 +4,7 @@ import data from "./data.json";
 import AddVideo from './components/AddVideo';
 import VideoMap from './components/VideoMap';
 import ThemeContext from './context/ThemeContext';
+import VideoDispatchContext from './context/VideoDispatchContext';
 
 function App() {
   console.log("App")
@@ -56,10 +57,12 @@ function App() {
 
   return (
     <ThemeContext.Provider value={mode}>
-      <div className={`main-app ${mode}`}>
-        <AddVideo editableVid={editableVid} modeSwitcher={modeSwitcher} mode={mode} dispatch={dispatch} ></AddVideo>
-        <VideoMap video={video} updateVideo={updateVideo} dispatch={dispatch}></VideoMap>
-      </div>
+      <VideoDispatchContext.Provider value={dispatch}>
+        <div className={`main-app ${mode}`}>
+          <AddVideo editableVid={editableVid} modeSwitcher={modeSwitcher} mode={mode} ></AddVideo>
+          <VideoMap video={video} updateVideo={updateVideo} ></VideoMap>
+        </div>
+      </VideoDispatchContext.Provider>
     </ThemeContext.Provider>
   );
 }

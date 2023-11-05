@@ -1,22 +1,7 @@
-ContextAPI :-
-We can use contextApi fo avoiding prop drilling. It is basically a global variable
+ContextAPI with Reducer :-
+In this Chapter we put dispatch function in the context and use .Provider to set his value. And also remove the prop of dispatch and call it whenever we like
 
-1). createContext (import) ==> First create a file where u want to store context then export your context to default. and then create context.Also put default value whatever u wanna pass in prop, Its better if you use name of file and context variable same.
-syntax = const ThemeContext = createContext("light-mode")
+Custom Hook :-
+We can create a custom hooks in react 
 
-2). In your App.js or any other file use useContext (import) to get the data from that context file you had created. You need to import that file to for accessing that data.
-syntax = const theme = useContext(ThemeContext)
-
-3). If you want to change value inside the context use .Provider method and value attribute to change it.
-example --> 
-	<ThemeContext.Provider value={yourvalue}>
-		...code
-	</ThemeContext.Provider>
-
-This ThemeContext.Provider value will overwrite the context value but use this provider method in top level of ypur app, Its not necessary but ih has its own scope.
-
-Check App.js, ThemeContext.js and AddVideo.js for better understanding
-
-
-
-
+Check CustomVideoDispatch.js , VideoDispatchContext.js , App.js , AddVidoe.js , Video.js for better understanding
