@@ -1,6 +1,7 @@
 import './App.css';
 import { useReducer, useState } from 'react';
 import data from "./data.json";
+import Count from './components/Count';
 import AddVideo from './components/AddVideo';
 import VideoMap from './components/VideoMap';
 import ThemeContext from './context/ThemeContext';
@@ -58,6 +59,7 @@ function App() {
   return (
     <ThemeContext.Provider value={mode}>
       <VideoDispatchContext.Provider value={dispatch}>
+        <Count></Count>
         <div className={`main-app ${mode}`}>
           <AddVideo editableVid={editableVid} modeSwitcher={modeSwitcher} mode={mode} ></AddVideo>
           <VideoMap video={video} updateVideo={updateVideo} ></VideoMap>

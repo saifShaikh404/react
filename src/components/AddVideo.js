@@ -1,4 +1,4 @@
-import React, { useContext,useEffect, useState } from 'react'
+import React, { useContext,useEffect, useRef, useState } from 'react'
 import './AddVideo.css';
 import ThemeContext from '../context/ThemeContext';
 import CustomVideoDispatch from '../context/CustomVideoDispatch';
@@ -16,6 +16,7 @@ const AddVideo = ({editableVid, modeSwitcher, mode}) => {
     }
 
     const [addVideo, setAddVideo] = useState(dataToAdd)
+    const titleRef = useRef(null)
 
     function handleAdd(e){
         e.stopPropagation();
@@ -45,6 +46,9 @@ const AddVideo = ({editableVid, modeSwitcher, mode}) => {
         } else {
           setAddVideo(dataToAdd)
         }
+
+        titleRef.current.focus()
+
       },[editableVid])
 
       let theme = useContext(ThemeContext)
@@ -60,7 +64,7 @@ const AddVideo = ({editableVid, modeSwitcher, mode}) => {
       </div>
 
       <form className={`form-element ${theme}`}>
-        <input type="text" onChange={handleChangeInput} value={addVideo.title} name="title" placeholder="Enter Title" />
+        <input type="text" ref={titleRef} onChange={handleChangeInput} value={addVideo.title} name="title" placeholder="Enter Title" /> {/* Now the titleRef have property of this input */}
         <input type="text" onChange={handleChangeInput} value={addVideo.views} name="views" placeholder="Enter Views" />
         <input type="text" onChange={handleChangeInput} value={addVideo.duration} name="duration" placeholder="Enter duration" />
         <button className='update-btn' onClick={handleAdd}>{editableVid ? "Edit":"Add"} Video</button>

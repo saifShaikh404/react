@@ -1,7 +1,22 @@
-ContextAPI with Reducer :-
-In this Chapter we put dispatch function in the context and use .Provider to set his value. And also remove the prop of dispatch and call it whenever we like
+useRef Hook :- 
+It stores the reference of the variable or html DOM element. We can store and access it using hookname.current property which is prefined
 
-Custom Hook :-
-We can create a custom hooks in react 
+useRef hook can store data after the component re render. But unlike useState , updating useRef wont re-render components
 
-Check CustomVideoDispatch.js , VideoDispatchContext.js , App.js , AddVidoe.js , Video.js for better understanding
+the syntax is pretty simple 
+
+const variable = useRef(someValue) // or u can give it to null if u want
+variable.current // For accessing value
+
+As for the DOM referemce 
+const variable = useRef(null)
+
+useEffect(() = > {
+	variable.current.focus()
+}, [])
+
+render(
+	<input type = "text" ref={variable} />  // ref is a prop which needs to be defined if you want to access dom reference on some element
+)
+
+Check Count.js and AddVideo.js for better understanding
