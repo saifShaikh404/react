@@ -1,8 +1,20 @@
 import React from 'react'
 import Video from './Video'
 import PlayButton from './PlayButton'
+import axios from 'axios'
+import { useEffect } from 'react'
 
 const VideoMap = ({video, updateVideo}) => {
+
+  useEffect(()=> {
+    async function handleApi(){
+      let data = await axios.get("https://jsonplaceholder.typicode.com/todos/")
+      console.log(data.data)
+    }
+    handleApi()
+  },[])
+
+
   return (
     <div className="container">
         {

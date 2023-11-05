@@ -1,10 +1,24 @@
 import CustomVideoDispatch from '../context/CustomVideoDispatch'
 import './Video.css'
-import React from 'react'
+import React, { useEffect } from 'react'
+
 
 const Video = ({title, channel="Anonymus", views, duration, image, id, verified=false, children, updateVideo}) => {
   console.log("Video")
   let dispatch = CustomVideoDispatch()
+
+  useEffect(() => {
+    let intervalID = setInterval(() => {
+      console.log("Running", id)
+    }, 1000)
+
+    return () => {
+      console.log("cleared")
+      clearInterval(intervalID)
+    }
+  }, [id])
+
+
   return (
     <>
     <div className='video'>

@@ -16,15 +16,28 @@ function App() {
     switch(action.type){
 
       case 'ADD':
-        return [
-          ...initialState,
-          {
-            ...action.payload,
-            id: initialState.at(-1).id + 1,
-            image: initialState.at(-1).image + 1,
-            verified: !initialState.at(-1).verified
-          }
-        ];
+        if(initialState[0]){
+          let newState = [
+            ...initialState,
+            {
+              ...action.payload,
+              id: initialState.at(-1).id + 1,
+              image: initialState.at(-1).image + 1,
+              verified: !initialState.at(-1).verified
+            }
+          ];
+          return newState
+        } else {
+          return [ 
+                {
+                  ...action.payload,
+                  id: 1,
+                  image: 1,
+                  verified: true
+                }
+              ];
+        }
+        
 
       case 'DELETE':
         setEditableVid(null);
