@@ -13,8 +13,8 @@ const VideoMap = ({video, updateVideo}) => {
   // }
   // let defVideo = useDeferredValue(video)
 
+  // Method 2 useTransition
   const [isPending, startTransition] = useTransition()
-
   let dispatch = CustomVideoDispatch()
   function handleAddVideo(){
     startTransition(() => {
@@ -28,6 +28,7 @@ const VideoMap = ({video, updateVideo}) => {
       {/* For Method 1  */}
       {/* <button onClick={handleAddVideo}>Add Video</button> */}
 
+      {/* For Method 2  */}
       <button onClick={handleAddVideo}>{isPending ? "Adding...":"Add Video"}</button>
 
         {
