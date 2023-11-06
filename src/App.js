@@ -1,7 +1,6 @@
 import './App.css';
 import { useReducer, useState } from 'react';
 import data from "./data.json";
-import CachedHook from './components/CachedHook';
 import Count from './components/Count';
 import AddVideo from './components/AddVideo';
 import VideoMap from './components/VideoMap';
@@ -39,6 +38,8 @@ function App() {
               ];
         }
         
+      case 'LOAD':
+        return action.payload
 
       case 'DELETE':
         setEditableVid(null);
@@ -56,7 +57,7 @@ function App() {
     }
   }
 
-  const [video, dispatch] = useReducer(videoReducer, data)
+  const [video, dispatch] = useReducer(videoReducer, [])
 
   const [mode, setMode] = useState('dark-mode')
   
@@ -77,7 +78,6 @@ function App() {
         <div className={`main-app ${mode}`}>
           <AddVideo editableVid={editableVid} modeSwitcher={modeSwitcher} mode={mode} ></AddVideo>
           <VideoMap video={video} updateVideo={updateVideo} ></VideoMap>
-        <CachedHook></CachedHook>
         </div>
       </VideoDispatchContext.Provider>
     </ThemeContext.Provider>

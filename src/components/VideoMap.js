@@ -1,23 +1,39 @@
-import React from 'react'
+import React, { useDeferredValue, useTransition } from 'react'
 import Video from './Video'
 import PlayButton from './PlayButton'
-import axios from 'axios'
-import { useEffect } from 'react'
+import data from "../data.json";
+import CustomVideoDispatch from '../context/CustomVideoDispatch';
 
 const VideoMap = ({video, updateVideo}) => {
 
-  useEffect(()=> {
-    async function handleApi(){
-      let data = await axios.get("https://jsonplaceholder.typicode.com/todos/")
-      console.log(data.data)
-    }
-    handleApi()
-  },[])
+  // Method 1 useDeferredValue
+  // let dispatch = CustomVideoDispatch()
+  // function handleAddVideo(){
+  //   dispatch({type:"LOAD", payload:data})
+  // }
+  // let defVideo = useDeferredValue(video)
 
+  const [isPending, startTransition] = useTransition()
+
+  let dispatch = CustomVideoDispatch()
+  function handleAddVideo(){
+    startTransition(() => {
+      dispatch({type:"LOAD", payload:data})
+    })
+  }
 
   return (
+    
     <div className="container">
+      {/* For Method 1  */}
+      {/* <button onClick={handleAddVideo}>Add Video</button> */}
+
+      <button onClick={handleAddVideo}>{isPending ? "Adding...":"Add Video"}</button>
+
         {
+          // Method 1 useDeferredValue
+          // defVideo.map((ele) => {
+
           video.map((ele) => {
             return (
               <Video 

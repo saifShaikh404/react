@@ -1,11 +1,22 @@
-useMemo Hook :- 
-use to memoized (cached) function value gives performance boost
+useDeferred Hook :- 
+Used for performance boost. For example when we fetch some data via ajax or some other method we can use this hook to process that data on background and make our app responsive boost
+example :-
+let defVideo = useDeferred(video)
+defVideo.map() 
+In the above example video is some data which we get after fetxhing so when data is changed the old data is still remain because we use useDeferred hook value. when the data is fetched then the map will also run with the new value
 
-useCallback Hook :-
-use to memoized (cached) whole function
 
-Their syntax are same and they boot take dependency array
+useTransition Hook :-
+Work same as useDeferred. There is one additional function here which is optional that if we want to do some action while data is fetching then we can do that using this hook.
+example :-
+const [isPending, startTransition] = useTransition() // no naming convention.Put whatever u like
+function handleAddVideo(){
+    startTransition(() => {
+        dispatch({type:"LOAD", payload:data})
+    })
+}
+{isPending ? "Loading": ""}
+video.map() 
+in this example this will work same as useDeferred. but additionally we can use isPending to do some extra action while data is loading. ispending by default is false. It becomes true when data is processing in background and then when data is processed and get ready to to map then it becomes false again
 
-If there is no dependency array to pass then just pass empty array
-
-Check CachedHook.js for better understanding.
+// Check VideoMap.js for better understanding
