@@ -1,11 +1,57 @@
-useMemo Hook :- 
-use to memoized (cached) function value gives performance boost
+1). forwardRef Hook :- 
+same as useRef the difference is when we use child component element reference to parent then we use this Hook
+example :- 
+i). Parent :-
+let ele = useRef(null)
+useEffect(() => {
+    ele.current.focus()
+},[])
 
-useCallback Hook :-
-use to memoized (cached) whole function
+render <Video ref={ele} prop="prop"><Video> // ref is predefined keyword for passing ref
 
-Their syntax are same and they boot take dependency array
+ii). childe :-
+let Video = forwardRef(function Video({props}, ref){ // we call ref outside the destructured props 
+    render(
+        <input ref={ref} type="text">
+    )
+})
 
-If there is no dependency array to pass then just pass empty array
+export default Video;
+- In above example we handle ref from parent component
 
-Check CachedHook.js for better understanding.
+
+2). useImperativeHandle Hook :- 
+This hook used in child component. This hook gives control the access of certain event that can handle by forwardRef ref in parent.
+example :- 
+
+i). Parent :-
+let ele = useRef(null)
+useEffect(() => {
+    ele.current.focus()
+},[])
+
+render <Video ref={ele} prop="prop"><Video> 
+
+ii). childe :-
+
+let Video = forwardRef(function Video({props}, ref){ 
+
+    const childRef = useRef(null) // this ref has full access of any event in this component
+
+    useImperativeHandle(ref, () => {
+        return{
+            focus(){ // you can name this whatever you want and call this on parent
+                childRef.current.focus // Only this event can handle in parent ref which is getting ref by child
+            }
+        }
+    },[])
+
+    render(
+        <input ref={childRef} type="text"> 
+    )
+})
+
+- In above example we put some restriction to ref coming from parent. only those function that can use which is defined in useImperativeHandle
+- we can controll <input ref={childRef} type="text">  with both parent and child ref. Both parent and child ref has access to controll this element.
+
+Check App.js and AddVideo.js for better understanding

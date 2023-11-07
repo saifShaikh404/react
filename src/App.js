@@ -1,5 +1,5 @@
 import './App.css';
-import { useReducer, useState } from 'react';
+import { useReducer, useRef, useState } from 'react';
 import data from "./data.json";
 import CachedHook from './components/CachedHook';
 import Count from './components/Count';
@@ -12,6 +12,7 @@ function App() {
   console.log("App")
 
   const [editableVid, setEditableVid] = useState(null)
+  const parentRef = useRef(null)
 
   function videoReducer(initialState, action){
     switch(action.type){
@@ -70,12 +71,16 @@ function App() {
     console.log(getSingleVideo)
   }
 
+  function handleFocus(){
+    parentRef.current.focus()
+  }
+
   return (
     <ThemeContext.Provider value={mode}>
       <VideoDispatchContext.Provider value={dispatch}>
-        <Count></Count>
         <div className={`main-app ${mode}`}>
-          <AddVideo editableVid={editableVid} modeSwitcher={modeSwitcher} mode={mode} ></AddVideo>
+          <button onClick={handleFocus}>Focus Box</button>
+          <AddVideo ref={parentRef} editableVid={editableVid} modeSwitcher={modeSwitcher} mode={mode} ></AddVideo>
           <VideoMap video={video} updateVideo={updateVideo} ></VideoMap>
         <CachedHook></CachedHook>
         </div>

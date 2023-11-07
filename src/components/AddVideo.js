@@ -1,9 +1,9 @@
-import React, { useContext,useEffect, useRef, useState } from 'react'
+import React, { forwardRef, useContext,useEffect, useImperativeHandle, useRef, useState } from 'react'
 import './AddVideo.css';
 import ThemeContext from '../context/ThemeContext';
 import CustomVideoDispatch from '../context/CustomVideoDispatch';
 
-const AddVideo = ({editableVid, modeSwitcher, mode}) => {
+const AddVideo = forwardRef(function AddVideo({editableVid, modeSwitcher, mode}, ref){
 
     let dataToAdd = {
             id: null,
@@ -16,7 +16,15 @@ const AddVideo = ({editableVid, modeSwitcher, mode}) => {
     }
 
     const [addVideo, setAddVideo] = useState(dataToAdd)
-    const titleRef = useRef(null)
+    const childRef = useRef(null)
+
+    useImperativeHandle(ref, ()=>{
+      return {
+        focus(){
+          childRef.current.focus()
+        }
+      }
+    }, [])
 
     function handleAdd(e){
         e.stopPropagation();
@@ -40,15 +48,18 @@ const AddVideo = ({editableVid, modeSwitcher, mode}) => {
         });
       }
 
+      function hancleCheckRef(e){
+        e.preventDefault()
+        childRef.current.value = "I m working with child ref"
+      }
+
       useEffect(() => {
         if(editableVid !== null){
           setAddVideo(editableVid);
         } else {
           setAddVideo(dataToAdd)
         }
-
-        titleRef.current.focus()
-
+        
       },[editableVid])
 
       let theme = useContext(ThemeContext)
@@ -59,18 +70,19 @@ const AddVideo = ({editableVid, modeSwitcher, mode}) => {
 
       <div className="header-content">
           <h1 className={`main-title ${theme}`}>Image gallary</h1>
-          <button className={`${theme}`} onClick={modeSwitcher}>Swith Mode to {mode == 'dark-mode' ? '☀️': '🌑'}</button> 
-          {/* &#x1F319; */}
+          <button className={`${theme}`} onClick={modeSwitcher}>Swith Mode to {mode == 'dark-mode' ? '☀️': '🌑'}</button>
       </div>
 
       <form className={`form-element ${theme}`}>
-        <input type="text" ref={titleRef} onChange={handleChangeInput} value={addVideo.title} name="title" placeholder="Enter Title" /> {/* Now the titleRef have property of this input */}
+        <button onClick={hancleCheckRef}>Check Childe Ref</button>
+        <input type="text" ref={childRef} onChange={handleChangeInput} value={addVideo.title} name="title" placeholder="Enter Title" /> 
         <input type="text" onChange={handleChangeInput} value={addVideo.views} name="views" placeholder="Enter Views" />
         <input type="text" onChange={handleChangeInput} value={addVideo.duration} name="duration" placeholder="Enter duration" />
         <button className='update-btn' onClick={handleAdd}>{editableVid ? "Edit":"Add"} Video</button>
       </form>
+      
     </div>
   )
-}
+})
 
 export default AddVideo
